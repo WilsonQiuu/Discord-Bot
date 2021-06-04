@@ -28,32 +28,21 @@ module.exports = {
         message.guild.roles.cache.find(role => role.name === 'UTC -10'),
         message.guild.roles.cache.find(role => role.name === 'UTC -9')
         ]
-        
-        // var map = {};
-        // map['0️⃣'] = 0;
-        // map['1️⃣'] = 1;
-        // map['2️⃣'] = 2;
-        // map['3️⃣'] = 3;
-        // map['4️⃣'] = 4;
-        // map['5️⃣'] = 5;
-        // map['6️⃣'] = 6;
-        // map['7️⃣'] = 7;
-        // map['8️⃣'] = 8;
-        // map['9️⃣'] = 9;
-        // map['🔟'] = 10;
+
         
         
         
 
 
         client.on('messageReactionAdd',async(reaction,user) =>{
-            console.log("added role");
+            
             if(reaction.message.partial) await reaction.message.fetch();
             if(reaction.partial) await reaction.fetch();
             if(user.bot) return;
             if(!reaction.message.guild) return;
 
             if(reaction.message.channel.id == channel){
+                console.log("added role");
                 let index = map[reaction.emoji.name];
                 await reaction.message.guild.members.cache.get(user.id).roles.add(timeroles[index]);
                 setTimeout(() => {client.commands.get('update').execute(message)}, 1000);
@@ -65,13 +54,13 @@ module.exports = {
         });
 
         client.on('messageReactionRemove',async(reaction,user) =>{
-            console.log("removed Role");
             if(reaction.message.partial) await reaction.message.fetch();
             if(reaction.partial) await reaction.fetch();
             if(user.bot) return;
             if(!reaction.message.guild) return;
 
             if(reaction.message.channel.id == channel){
+                console.log("removed Role");
                 let index = map[reaction.emoji.name];
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(timeroles[index]);
                 setTimeout(() => {client.commands.get('update').execute(message)}, 1000);

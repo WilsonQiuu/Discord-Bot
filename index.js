@@ -1,10 +1,10 @@
 
 // need to create all roles 
-require('dotenv').config();
-
 const Discord = require("discord.js");
 
 const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL","REACTION"]});
+
+require('dotenv').config();
 const token = process.env.TOKEN
 
 const prefix = '!';

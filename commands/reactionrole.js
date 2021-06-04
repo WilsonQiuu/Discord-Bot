@@ -2,12 +2,12 @@
 module.exports = {
     /** 
      * only ran once when the bot is first added to the server
-     * then send !init into the startup text channel
      */
     name: 'reactionrole',
     description: "Initiates all all the roles required for the bot to run (run once)",
     async execute(message,Discord,client,args){
-        if(client.channels.cache.find(c =>c.name === 'choose-timezone')){
+        // only finds the first one of the selected channels
+        if(message.guild.channels.cache.find(c =>c.name === 'choose-timezone')){
             console.log("yes");
         }
         else{
@@ -54,17 +54,17 @@ module.exports = {
         for(let i = 0;i<emojis.length;i++){
             messageEmbed.react(emojis[i]);
         }
-        // message.guild.roles.create({data: {name: 'UTC -7',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC -5',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC -4',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC +1',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC +2',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC +8',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC +10',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC +12',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC -10',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: 'UTC -9',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC -7',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC -5',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC -4',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC +1',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC +2',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC +8',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC +10',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC +12',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC -10',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: 'UTC -9',color: 'BLUE',},}).catch(console.error);
         let c = await message.guild.channels.create('startup', {
             type: 'text',
             })   
@@ -72,30 +72,30 @@ module.exports = {
             setTimeout(() => {
             c.send("!init");
               }, 2000);
-        // message.guild.roles.create({data: {name: '12 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '1 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '2 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '3 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '4 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '5 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '6 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '7 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '8 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '9 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '10 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '11 am',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '12 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '1 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '2 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '3 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '4 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '5 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '6 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '7 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '8 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '9 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '10 pm',color: 'BLUE',},}).catch(console.error);
-        // message.guild.roles.create({data: {name: '11 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '12 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '1 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '2 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '3 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '4 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '5 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '6 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '7 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '8 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '9 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '10 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '11 am',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '12 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '1 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '2 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '3 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '4 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '5 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '6 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '7 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '8 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '9 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '10 pm',color: 'BLUE',},}).catch(console.error);
+        message.guild.roles.create({data: {name: '11 pm',color: 'BLUE',},}).catch(console.error);
 
 
         
