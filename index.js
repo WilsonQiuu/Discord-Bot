@@ -1,9 +1,10 @@
+
 // need to create all roles 
 const Discord = require("discord.js");
 
 const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL","REACTION"]});
 
-const token = 'ODQ0NzEyOTY0OTI1MTYxNDcz.YKWaQA.DvMN2nDpcLa0k6owoXmJQ2m6TOs' 
+const token = 'ODQ0NzEyOTY0OTI1MTYxNDcz.YKWaQA.dIRTaHZ80iYUkfPRUa6kUANEN5s' 
 
 const prefix = '!';
 
@@ -21,7 +22,6 @@ for(const file of commandFiles){
 
 client.on('ready',()=>{
     console.log('This bot is good');
-    // starts the program as soon as the program starts 
     if(client.channels.cache.find(c =>c.name === "startup")){
         client.channels.cache.find(c =>c.name === "startup").send("!init");
     }
@@ -50,7 +50,7 @@ client.on('message',message=>{
         client.commands.get('update').execute(message);
 
     } else if(command === 'reactionrole'){ // ran the first time the bot is introdced into a
-        client.commands.get('reactionrole').execute(message,Discord);
+        client.commands.get('reactionrole').execute(message,Discord,client,args);
     }
     // only for initiation
     else if(command === 'init'){
