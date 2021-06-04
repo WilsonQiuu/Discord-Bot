@@ -23,6 +23,7 @@ for(const file of commandFiles){
 
 client.on('ready',()=>{
     console.log('This bot is good');
+    // only finds the first server
     if(client.channels.cache.find(c =>c.name === "startup")){
         client.channels.cache.find(c =>c.name === "startup").send("!init");
     }
