@@ -4,7 +4,7 @@ const Discord = require("discord.js");
 
 const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL","REACTION"]});
 
-const token = 'ODQ0NzEyOTY0OTI1MTYxNDcz.YKWaQA.dIRTaHZ80iYUkfPRUa6kUANEN5s' 
+const token = 'ODQ0NzEyOTY0OTI1MTYxNDcz.YKWaQA.8125lCqip-Vv6Wu8B8JCc8EOda8' 
 
 const prefix = '!';
 
