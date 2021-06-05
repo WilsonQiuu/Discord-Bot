@@ -21,12 +21,20 @@ for(const file of commandFiles){
     
 }
 
+client.on("guildCreate", guild => {
+    console.log("Joined a new guild: " + guild.name);
+});
+
 client.on('ready',()=>{
     console.log('This bot is good');
-    // only finds the first server
-    if(client.channels.cache.find(c =>c.name === "startup")){
-        client.channels.cache.find(c =>c.name === "startup").send("!init");
-    }
+    // only finds the first server to send to must send to every server
+    
+    client.guilds.cache.forEach(server => {
+        if(server.channels.cache.find(c =>c.name === "startup")){
+            server.channels.cache.find(c =>c.name === "startup").send("!init");
+        }
+    });
+    
     client.user.setActivity("With Time");
 });
 
