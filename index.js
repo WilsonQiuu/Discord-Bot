@@ -23,6 +23,8 @@ for(const file of commandFiles){
 
 client.on("guildCreate", guild => {
     console.log("Joined a new guild: " + guild.name);
+    guild.channels.cache.filter(chx => chx.type === "text").find(x => x.position === 0).send("!reactionrole");
+
 });
 
 client.on('ready',()=>{
@@ -37,6 +39,65 @@ client.on('ready',()=>{
     
     client.user.setActivity("With Time");
 });
+var json = `[
+    {
+        "emoji": "0️⃣",
+        "utcOffset": -7,
+        "region": "US-West"
+    },
+    {
+        "emoji": "1️⃣",
+        "utcOffset": -5,
+        "region": "US-Central"
+    },
+    {
+        "emoji": "2️⃣",
+        "utcOffset": -4,
+        "region": "US-East"
+    },
+    {
+        "emoji": "3️⃣",
+        "utcOffset": 0,
+        "region": "Iceland"
+    },
+    {
+        "emoji": "4️⃣",
+        "utcOffset": 1,
+        "region": "Belgium"
+    },
+    {
+        "emoji": "5️⃣",
+        "utcOffset": 2,
+        "region": "Egypt"
+    },
+    {
+        "emoji": "6️⃣",
+        "utcOffset": 8,
+        "region": "China"
+    },
+    {
+        "emoji": "7️⃣",
+        "utcOffset": 10,
+        "region": "Au-East"
+    },
+    {
+        "emoji": "8️⃣",
+        "utcOffset": 12,
+        "region": "Newfoundland"
+    },
+    {
+        "emoji": "9️⃣",
+        "utcOffset": -10,
+        "region": "Hawaii"
+    },
+    {
+        "emoji": "🔟",
+        "utcOffset": -9,
+        "region": "Atlantic Time"
+    }
+
+]`
+var timejson = JSON.parse(json);
 
 var map = {};
         map['0️⃣'] = 0;
@@ -57,14 +118,14 @@ client.on('message',message=>{
     const command = args.shift().toLowerCase();
 
     if(command === 'update'){
-        client.commands.get('update').execute(message);
+        client.commands.get('update').execute(message,timejson);
 
     } else if(command === 'reactionrole'){ // ran the first time the bot is introdced into a
-        client.commands.get('reactionrole').execute(message,Discord,client,args);
+        client.commands.get('reactionrole').execute(message,Discord,client,args,timejson);
     }
     // only for initiation
     else if(command === 'init'){
-        client.commands.get('init').execute(message,args,client,map);
+        client.commands.get('init').execute(message,args,client,map,timejson);
     }
 
 });

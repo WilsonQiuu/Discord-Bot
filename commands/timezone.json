@@ -1,7 +1,58 @@
 [
     {
         "Emoji": "0️⃣",
-        "tcOffset": -7,
+        "utcOffset": -7,
         "region": "US-West"
+    },
+    {
+        "Emoji": "1️⃣",
+        "utcOffset": -5,
+        "region": "US-Central"
+    },
+    {
+        "Emoji": "2️⃣",
+        "utcOffset": -4,
+        "region": "US-East"
+    },
+    {
+        "Emoji": "3️⃣",
+        "utcOffset": 0,
+        "region": "Iceland"
+    },
+    {
+        "Emoji": "4️⃣",
+        "utcOffset": 1,
+        "region": "Belgium"
+    },
+    {
+        "Emoji": "5️⃣",
+        "utcOffset": 2,
+        "region": "Egypt"
+    },
+    {
+        "Emoji": "6️⃣",
+        "utcOffset": 8,
+        "region": "China"
+    },
+    {
+        "Emoji": "7️⃣",
+        "utcOffset": 10,
+        "region": "Au-East"
+    },
+    {
+        "Emoji": "8️⃣",
+        "utcOffset": 12,
+        "region": "Newfoundland"
+    },
+    {
+        "Emoji": "9️⃣",
+        "utcOffset": -10,
+        "region": "Hawaii"
+    },
+    {
+        "Emoji": "🔟",
+        "utcOffset": -9,
+        "region": "Atlantic Time"
     }
+
 ]

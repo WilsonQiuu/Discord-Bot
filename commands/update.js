@@ -2,7 +2,7 @@
 module.exports = {
   name: 'update',
   description: "this updates all the times for the roles!",
-  async execute(message) {
+  async execute(message,timejson) {
     // the array of roles that represent time
 
     let times = [];
@@ -26,36 +26,24 @@ module.exports = {
         role.members.forEach(member => member.roles.remove(hourRoleIDs[i]));
       });
     }
-    let offset = [
-      -7,
-      -5,
-      -4,
-      0,
-      1,
-      2,
-      8,
-      10,
-      12,
-      -10,
-      -9
-    ]
-    let timeroles = [
-      "UTC -7",
-      "UTC -5",
-      "UTC -4",
-      "UTC",
-      "UTC +1",
-      "UTC +2",
-      "UTC +8",
-      "UTC +10",
-      "UTC +12",
-      "UTC -10",
-      "UTC -9",
-    ]
+    let timeroles = [];
+
+    let jsonSize = 11
+    for(let i = 0;i< jsonSize;i++){
+      let string = "";
+      if(timejson[i].utcOffset > 0){
+        string = string + " +" + timejson[i].utcOffset;
+      }
+      else if(timejson[i].utcOffset < 0){
+        string = string + " " + timejson[i].utcOffset
+      }
+      timeroles[i] = "UTC" + string;
+    }
+    
     var roleOffset;
     let d = new Date();
     for(let i =0;i<timeroles.length;i++){
-      roleOffset = offset[i];
+      roleOffset = timejson[i].utcOffset;
       let membersWithRole = await message.guild.roles.cache.get(await message.guild.roles.cache.find(role => role.name === timeroles[i]).id).members;
       let u = d.getUTCHours();
       u = u + roleOffset;

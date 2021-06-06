@@ -5,7 +5,7 @@ module.exports = {
      */
     name: 'reactionrole',
     description: "Initiates all all the roles required for the bot to run (run once)",
-    async execute(message,Discord,client,args){
+    async execute(message,Discord,client,args,timejson){
         // only finds the first one of the selected channels
         if(message.guild.channels.cache.find(c =>c.name === 'choose-timezone')){
             console.log("yes");
@@ -31,6 +31,7 @@ module.exports = {
         '9️⃣',
         '🔟'
         ]
+        
         let embed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Choose your Timezone')
@@ -42,9 +43,9 @@ module.exports = {
         + `${emojis[4]} for ECT (UTC +1) Belgium\n`
         + `${emojis[5]} for EET (UTC +2) Egypt\n`
         + `${emojis[6]} for CTT (UTC +8) China\n`
-        + `${emojis[7]} for AET (UTC +10)\n`
-        + `${emojis[8]} for NST (UTC +12)\n`
-        + `${emojis[9]} for HST (UTC -10) Australian East\n`
+        + `${emojis[7]} for AET (UTC +10) Australia East\n`
+        + `${emojis[8]} for NST (UTC +12) Newfoundland\n`
+        + `${emojis[9]} for HST (UTC -10) Hawaii\n`
         + `${emojis[10]} for AST (UTC -9) Atlantic Time`
         );
 
