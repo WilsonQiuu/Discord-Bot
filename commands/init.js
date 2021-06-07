@@ -2,16 +2,16 @@
 module.exports = {
     name: 'init',
     description: "initiates roles and the reaction chat with message",
-    execute(message,args,client,map,timejson){
+    execute(message,args,client,map,timezones){
         console.log("ran");
-        client.commands.get('update').execute(message,timejson);
+        client.commands.get('update').execute(message,timezones);
         var d = new Date();
         var minutes = d.getUTCMinutes();
         minutes = 61 - minutes;
         minutes =  minutes * 60;
         minutes = minutes *1000;
         setTimeout(() => {
-            client.commands.get('init').execute(message,args,client,map,timejson);
+            client.commands.get('init').execute(message,args,client,map,timezones);
           }, minutes);
 
         const channel = message.guild.channels.cache.find(c => c.name === "choose-timezone");
@@ -19,14 +19,13 @@ module.exports = {
 
         let timeroles = [];
 
-        let jsonSize = 11
-        for(let i = 0;i< jsonSize;i++){
+        for(let i = 0;i< timezones.length;i++){
         let string = "UTC";
-        if(timejson[i].utcOffset > 0){
-            string = string + " +" + timejson[i].utcOffset;
+        if(timezones[i].utcOffset > 0){
+            string = string + " +" + timezones[i].utcOffset;
         }
-        else if(timejson[i].utcOffset < 0){
-            string = string + " " + timejson[i].utcOffset
+        else if(timezones[i].utcOffset < 0){
+            string = string + " " + timezones[i].utcOffset
         }
 
         timeroles[i] = message.guild.roles.cache.find(role => role.name === string);
@@ -47,7 +46,7 @@ module.exports = {
                 console.log("added role");
                 let index = map[reaction.emoji.name];
                 await reaction.message.guild.members.cache.get(user.id).roles.add(timeroles[index]);
-                setTimeout(() => {client.commands.get('update').execute(message,timejson)}, 1000);
+                setTimeout(() => {client.commands.get('update').execute(message,timezones)}, 1000);
 
             }
             else{
@@ -65,7 +64,7 @@ module.exports = {
                 console.log("removed Role");
                 let index = map[reaction.emoji.name];
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(timeroles[index]);
-                setTimeout(() => {client.commands.get('update').execute(message,timejson)}, 1000);
+                setTimeout(() => {client.commands.get('update').execute(message,timezones)}, 1000);
                 
             }
             else{

@@ -2,7 +2,7 @@
 module.exports = {
   name: 'update',
   description: "this updates all the times for the roles!",
-  async execute(message,timejson) {
+  async execute(message, timezones) {
     // the array of roles that represent time
 
     let times = [];
@@ -16,10 +16,10 @@ module.exports = {
     let hourRoleIDs = [];
     const roles = await message.guild.roles.fetch();
 
-    for(let time of times){
+    for (let time of times) {
       let roleID = roles.cache.find(role => role.name === time).id;
       hourRoleIDs.push(roleID);
-    }  
+    }
 
     for (let i = 0; i < 24; i++) {
       await message.guild.roles.fetch(hourRoleIDs[i]).then(role => {
@@ -28,22 +28,21 @@ module.exports = {
     }
     let timeroles = [];
 
-    let jsonSize = 11
-    for(let i = 0;i< jsonSize;i++){
+    for (let i = 0; i < timezones.length; i++) {
       let string = "";
-      if(timejson[i].utcOffset > 0){
-        string = string + " +" + timejson[i].utcOffset;
+      if (timezones[i].utcOffset > 0) {
+        string = string + " +" + timezones[i].utcOffset;
       }
-      else if(timejson[i].utcOffset < 0){
-        string = string + " " + timejson[i].utcOffset
+      else if (timezones[i].utcOffset < 0) {
+        string = string + " " + timezones[i].utcOffset
       }
       timeroles[i] = "UTC" + string;
     }
-    
+
     var roleOffset;
     let d = new Date();
-    for(let i =0;i<timeroles.length;i++){
-      roleOffset = timejson[i].utcOffset;
+    for (let i = 0; i < timeroles.length; i++) {
+      roleOffset = timezones[i].utcOffset;
       let membersWithRole = await message.guild.roles.cache.get(await message.guild.roles.cache.find(role => role.name === timeroles[i]).id).members;
       let u = d.getUTCHours();
       u = u + roleOffset;
@@ -53,19 +52,16 @@ module.exports = {
       else if (u > 23) {
         u = u - 24;
       }
-      if(membersWithRole.size > 0){
+      if (membersWithRole.size > 0) {
         await membersWithRole.forEach(member => {
-            setTimeout(() => {
-              let timeRole = message.guild.roles.cache.get(hourRoleIDs[u]);
-              // remove the previous time roles
-              member.roles.add(timeRole).catch(console.error);
-            }, 1000);
-          });
+          setTimeout(() => {
+            let timeRole = message.guild.roles.cache.get(hourRoleIDs[u]);
+            // remove the previous time roles
+            member.roles.add(timeRole).catch(console.error);
+          }, 1000);
+        });
       }
     }
-
-
-
-    }
+  }
 
 }

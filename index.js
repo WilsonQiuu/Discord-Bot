@@ -39,78 +39,16 @@ client.on('ready',()=>{
     
     client.user.setActivity("With Time");
 });
-var json = `[
-    {
-        "emoji": "0️⃣",
-        "utcOffset": -7,
-        "region": "US-West"
-    },
-    {
-        "emoji": "1️⃣",
-        "utcOffset": -5,
-        "region": "US-Central"
-    },
-    {
-        "emoji": "2️⃣",
-        "utcOffset": -4,
-        "region": "US-East"
-    },
-    {
-        "emoji": "3️⃣",
-        "utcOffset": 0,
-        "region": "Iceland"
-    },
-    {
-        "emoji": "4️⃣",
-        "utcOffset": 1,
-        "region": "Belgium"
-    },
-    {
-        "emoji": "5️⃣",
-        "utcOffset": 2,
-        "region": "Egypt"
-    },
-    {
-        "emoji": "6️⃣",
-        "utcOffset": 8,
-        "region": "China"
-    },
-    {
-        "emoji": "7️⃣",
-        "utcOffset": 10,
-        "region": "Au-East"
-    },
-    {
-        "emoji": "8️⃣",
-        "utcOffset": 12,
-        "region": "Newfoundland"
-    },
-    {
-        "emoji": "9️⃣",
-        "utcOffset": -10,
-        "region": "Hawaii"
-    },
-    {
-        "emoji": "🔟",
-        "utcOffset": -9,
-        "region": "Atlantic Time"
-    }
 
-]`
-var timejson = JSON.parse(json);
+const timesoneString =  fs.readFileSync('timezone.json', 'utf8');
+let timezones = JSON.parse(timesoneString);
 
-var map = {};
-        map['0️⃣'] = 0;
-        map['1️⃣'] = 1;
-        map['2️⃣'] = 2;
-        map['3️⃣'] = 3;
-        map['4️⃣'] = 4;
-        map['5️⃣'] = 5;
-        map['6️⃣'] = 6;
-        map['7️⃣'] = 7;
-        map['8️⃣'] = 8;
-        map['9️⃣'] = 9;
-        map['🔟'] = 10;
+
+var map = {};   
+for(let i = 0;i<timezones.length;i++){
+    map[timezones[i].emoji] = i;
+}
+    
 client.on('message',message=>{
     if(!message.content.startsWith(prefix)) return;
 
@@ -118,17 +56,20 @@ client.on('message',message=>{
     const command = args.shift().toLowerCase();
 
     if(command === 'update'){
-        client.commands.get('update').execute(message,timejson);
+        client.commands.get('update').execute(message,timezones);
 
     } else if(command === 'reactionrole'){ // ran the first time the bot is introdced into a
-        client.commands.get('reactionrole').execute(message,Discord,client,args,timejson);
+        client.commands.get('reactionrole').execute(message,Discord,client,args,timezones);
     }
     // only for initiation
     else if(command === 'init'){
-        client.commands.get('init').execute(message,args,client,map,timejson);
+        client.commands.get('init').execute(message,args,client,map,timezones);
     }
 
 });
+
+
+
 
 
 
