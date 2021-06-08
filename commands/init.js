@@ -65,16 +65,7 @@ module.exports = {
                 return;
             }
         });
-        while(true){
-            var d = new Date();
-        var minutes = d.getUTCMinutes();
-        minutes = 61 - minutes;
-        minutes =  minutes * 60;
-        minutes = minutes *1000;
-        setTimeout(() => {
-            client.commands.get('update').execute(message,args,client,map,timezones);
-          }, minutes);
-        }
+        
 
     }
 }
