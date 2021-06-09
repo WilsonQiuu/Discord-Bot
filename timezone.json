@@ -48,6 +48,7 @@
         "region": "Au-East"
     },
     {
+        "timezone" : "PST",
         "emoji": "8️⃣",
         "utcOffset": 12,
         "region": "Newfoundland"
