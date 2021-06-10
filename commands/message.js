@@ -87,8 +87,8 @@ async function setReactionAddListener(client, message) {
 }
 
 async function setReactionRemoveListeners(client, message) {
-  let timeroles = findUtcTimeRoles(message);
   client.on("messageReactionRemove", async (reaction, user) => {
+    let timeroles = findUtcTimeRoles(message);
     if (reaction.message.partial) await reaction.message.fetch();
     if (reaction.partial) await reaction.fetch();
     if (user.bot) return;

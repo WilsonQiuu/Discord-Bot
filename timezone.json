@@ -1,68 +1,69 @@
 [
+    
     {
-        "timezone" : "PST",
+        "timezone" : "HST",
         "emoji": "0️⃣",
-        "utcOffset": -7,
-        "region": "US-West"
-    },
-    {
-        "timezone" : "EST",
-        "emoji": "1️⃣",
-        "utcOffset": -5,
-        "region": "US-Central"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "2️⃣",
-        "utcOffset": -4,
-        "region": "US-East"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "3️⃣",
-        "utcOffset": 0,
-        "region": "Iceland"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "4️⃣",
-        "utcOffset": 1,
-        "region": "Belgium"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "5️⃣",
-        "utcOffset": 2,
-        "region": "Egypt"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "6️⃣",
-        "utcOffset": 8,
-        "region": "China"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "7️⃣",
-        "utcOffset": 10,
-        "region": "Au-East"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "8️⃣",
-        "utcOffset": 12,
-        "region": "Newfoundland"
-    },
-    {
-        "timezone" : "PST",
-        "emoji": "9️⃣",
         "utcOffset": -10,
         "region": "Hawaii"
     },
     {
-        "timezone" : "PST",
-        "emoji": "🔟",
+        "timezone" : "ADT",
+        "emoji": "1️⃣",
         "utcOffset": -9,
-        "region": "Atlantic Time"
+        "region": "Alaska-West"
+    },
+    {
+        "timezone" : "PST",
+        "emoji": "2️⃣",
+        "utcOffset": -7,
+        "region": "US-West"
+    },
+    {
+        "timezone" : "MDT",
+        "emoji": "3️⃣",
+        "utcOffset": -6,
+        "region": "Alberta"
+    },
+    {
+        "timezone" : "EST",
+        "emoji": "4️⃣",
+        "utcOffset": -5,
+        "region": "US-Central"
+    },
+    {
+        "timezone" : "PRT",
+        "emoji": "5️⃣",
+        "utcOffset": -4,
+        "region": "US-East"
+    },
+    {
+        "timezone" : "GMT",
+        "emoji": "6️⃣",
+        "utcOffset": 0,
+        "region": "Iceland"
+    },
+    {
+        "timezone" : "EET",
+        "emoji": "7️⃣",
+        "utcOffset": 2,
+        "region": "Egypt"
+    },
+    {
+        "timezone" : "CST",
+        "emoji": "8️⃣",
+        "utcOffset": 8,
+        "region": "China"
+    },
+    {
+        "timezone" : "AEST",
+        "emoji": "9️⃣",
+        "utcOffset": 10,
+        "region": "Au-East"
+    },
+    {
+        "timezone" : "NZST",
+        "emoji": "🔟",
+        "utcOffset": 12,
+        "region": "New Zealand"
     }
 ]

@@ -68,7 +68,7 @@ async function createUtcTimeRoles(guild) {
         ? ` ${timezone.utcOffset}`
         : "");
     if (guild.roles.cache.find((role) => role.name === utcTime)) continue;
-    guild.roles
+    await guild.roles
       .create({ data: { name: utcTime, color: "BLUE" } })
       .catch(console.error);
   }
