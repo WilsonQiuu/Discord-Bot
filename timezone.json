@@ -4,66 +4,77 @@
         "timezone" : "HST",
         "emoji": "0️⃣",
         "utcOffset": -10,
-        "region": "Hawaii"
+        "region": "Hawaii",
+        "countryEmoji": ":flag_us:"
     },
     {
         "timezone" : "ADT",
         "emoji": "1️⃣",
         "utcOffset": -9,
-        "region": "Alaska-West"
+        "region": "Alaska-West",
+        "countryEmoji": ":flag_us:"
     },
     {
         "timezone" : "PST",
         "emoji": "2️⃣",
         "utcOffset": -7,
-        "region": "US-West"
+        "region": "US-West",
+        "countryEmoji": ":flag_us:"
     },
     {
         "timezone" : "MDT",
         "emoji": "3️⃣",
         "utcOffset": -6,
-        "region": "Alberta"
+        "region": "Alberta",
+        "countryEmoji": ":flag_ca:"
     },
     {
         "timezone" : "EST",
         "emoji": "4️⃣",
         "utcOffset": -5,
-        "region": "US-Central"
+        "region": "US-Central",
+        "countryEmoji": ":flag_us:"
     },
     {
         "timezone" : "PRT",
         "emoji": "5️⃣",
         "utcOffset": -4,
-        "region": "US-East"
+        "region": "US-East",
+        "countryEmoji": ":flag_us:"
     },
     {
         "timezone" : "GMT",
         "emoji": "6️⃣",
         "utcOffset": 0,
-        "region": "Iceland"
+        "region": "Iceland",
+        "countryEmoji": ":flag_is:"
     },
     {
         "timezone" : "EET",
         "emoji": "7️⃣",
         "utcOffset": 2,
-        "region": "Egypt"
+        "region": "Egypt",
+        "countryEmoji": ":flag_eg:"
     },
     {
         "timezone" : "CST",
         "emoji": "8️⃣",
         "utcOffset": 8,
-        "region": "China"
+        "region": "China",
+        "countryEmoji": ":flag_cn:"
     },
     {
         "timezone" : "AEST",
         "emoji": "9️⃣",
         "utcOffset": 10,
-        "region": "Au-East"
+        "region": "Aus-East",
+        "countryEmoji": ":flag_au:"
     },
     {
         "timezone" : "NZST",
         "emoji": "🔟",
         "utcOffset": 12,
-        "region": "New Zealand"
+        "region": "New Zealand",
+        "countryEmoji": ":flag_nz:"
     }
 ]

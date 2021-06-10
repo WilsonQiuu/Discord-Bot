@@ -18,15 +18,27 @@ const timesoneString = fs.readFileSync("timezone.json", "utf8");
 const timezones = JSON.parse(timesoneString);
 
 async function createEmbedMessage(Discord, message, timezones) {
-  let description = "Choosing a number will give you a bot role\n\n";
-  for (let i = 0; i < timezones.length; i++) {
-    description += `${timezones[i].emoji} for ${timezones[i].timezone} (UTC ${timezones[i].utcOffset}) ${timezones[i].region}\n`;
-  }
+  let description = "Choosing a number will give you a timezone role\n\n";
+  // for (let i = 0; i < timezones.length; i++) {
+  //   description += `${timezones[i].emoji} for `;
+  //   let timeAbrev = timezones[i].timezone.padEnd(10, " ");
+  //   description += `${timeAbrev}`;
+  //   description += ` (UTC ${timezones[i].utcOffset}) ${timezones[i].countryEmoji} ${timezones[i].region}\n`;
+  // }
 
   let embed = new Discord.MessageEmbed()
     .setColor("BLUE")
     .setTitle("Choose your Timezone")
     .setDescription(description);
+  for (let i = 0; i < timezones.length; i++) {
+    embed.addField(
+      timezones[i].emoji + " " + timezones[i].timezone,
+      ` (UTC ` +
+        `${timezones[i].utcOffset})` +
+        " " +
+        `${timezones[i].countryEmoji} ${timezones[i].region}\n`
+    );
+  }
   let messageEmbed = await message.channel.send(embed);
 
   for (let timezone of timezones) {
