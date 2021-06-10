@@ -68,6 +68,8 @@ async function setReactionAddListener(client, message) {
     if (reaction.partial) await reaction.fetch();
     if (user.bot) return;
     if (!reaction.message.guild) return;
+    if (reaction.emoji.name === "") {
+    }
 
     if (reaction.message.id == message.id) {
       console.log("added role");
