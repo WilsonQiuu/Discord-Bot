@@ -29,7 +29,9 @@ client.on("message", (message) => {
   const args = message.content.slice(prefix.length).split(/ + /);
   const command = args.shift().toLowerCase();
   if (command === "timezone") {
-    client.commands.get("message").execute(Discord, client, message);
+    if (message.member.hasPermission("ADMINISTRATOR")) {
+      client.commands.get("message").execute(Discord, client, message);
+    }
   }
   if (command === "update") {
     client.commands.get("update").execute(message.guild);

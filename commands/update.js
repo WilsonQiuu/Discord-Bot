@@ -5,8 +5,8 @@ module.exports = {
     console.log("Updated");
     let timeRoles = await retrieveOrCreateTimeRoles(guild);
     let utcRoles = await retrieveOrCreateUtcRoles(guild);
-    await removeTimeRolesFromUsers(timeRoles, guild); // role.id
-    assignTimeRolesToUsers(timeRoles, utcRoles, guild); // role.ids
+    await removeTimeRolesFromUsers(timeRoles, guild);
+    assignTimeRolesToUsers(timeRoles, utcRoles, guild);
   },
 };
 

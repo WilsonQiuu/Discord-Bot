@@ -19,13 +19,6 @@ const timezones = JSON.parse(timesoneString);
 
 async function createEmbedMessage(Discord, message, timezones) {
   let description = "Choosing a number will give you a timezone role\n\n";
-  // for (let i = 0; i < timezones.length; i++) {
-  //   description += `${timezones[i].emoji} for `;
-  //   let timeAbrev = timezones[i].timezone.padEnd(10, " ");
-  //   description += `${timeAbrev}`;
-  //   description += ` (UTC ${timezones[i].utcOffset}) ${timezones[i].countryEmoji} ${timezones[i].region}\n`;
-  // }
-
   let embed = new Discord.MessageEmbed()
     .setColor("BLUE")
     .setTitle("Choose your Timezone")
@@ -33,8 +26,10 @@ async function createEmbedMessage(Discord, message, timezones) {
   for (let i = 0; i < timezones.length; i++) {
     embed.addField(
       timezones[i].emoji + " " + timezones[i].timezone,
-      ` (UTC ` +
-        `${timezones[i].utcOffset})` +
+      ` (UTC` +
+        (timezones[i].utcOffset > 0 ? ` +${timezones[i].utcOffset}` : "") +
+        (timezones[i].utcOffset < 0 ? ` ${timezones[i].utcOffset}` : "") +
+        `)` +
         " " +
         `${timezones[i].countryEmoji} ${timezones[i].region}\n`
     );
@@ -89,9 +84,7 @@ async function setReactionAddListener(client, message) {
       await reaction.message.guild.members.cache
         .get(user.id)
         .roles.add(timeroles[index]);
-      setTimeout(() => {
-        client.commands.get("update").execute(message.guild);
-      }, 1000);
+      client.commands.get("update").execute(message.guild);
     } else {
       return;
     }
@@ -112,9 +105,7 @@ async function setReactionRemoveListeners(client, message) {
       await reaction.message.guild.members.cache
         .get(user.id)
         .roles.remove(timeroles[index]);
-      setTimeout(() => {
-        client.commands.get("update").execute(message.guild);
-      }, 1000);
+      client.commands.get("update").execute(message.guild);
     } else {
       return;
     }

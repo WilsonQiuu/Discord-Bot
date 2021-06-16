@@ -76,5 +76,27 @@
         "utcOffset": 12,
         "region": "New Zealand",
         "countryEmoji": ":flag_nz:"
+    },
+    {
+        "timezone" : "VET",
+        "emoji": "🇻🇳",
+        "utcOffset": 7,
+        "region": "vietnam",
+        "countryEmoji": ":flag_vn:"
+    },
+    {
+        "timezone" : "BST",
+        "emoji": "🇬🇧",
+        "utcOffset": 1,
+        "region": "UK",
+        "countryEmoji": ":flag_gb:"
+    },
+    {
+        "timezone" : "IST",
+        "emoji": "🇮🇳",
+        "utcOffset": 5,
+        "region": "India",
+        "countryEmoji": ":flag_in:"
     }
+
 ]
